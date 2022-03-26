@@ -22,6 +22,18 @@ insert into course (id, name, created_date, last_updated_date) values (10001, 'J
 insert into course (id, name, created_date, last_updated_date) values (10002, 'JPA in 500 steps', sysdate(), sysdate());
 insert into course (id, name, created_date, last_updated_date) values (10003, 'JPA in 5000 steps', sysdate(), sysdate());
 
+insert into course (id, name, created_date, last_updated_date) values (10004, 'JPA in 50 steps A', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10005, 'JPA in 500 steps A', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10006, 'JPA in 5000 steps A', sysdate(), sysdate());
+
+insert into course (id, name, created_date, last_updated_date) values (10007, 'JPA in 50 steps B', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10008, 'JPA in 500 steps B', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10009, 'JPA in 5000 steps B', sysdate(), sysdate());
+
+insert into course (id, name, created_date, last_updated_date) values (10010, 'JPA in 50 steps C', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10011, 'JPA in 500 steps C', sysdate(), sysdate());
+insert into course (id, name, created_date, last_updated_date) values (10012, 'JPA in 5000 steps C', sysdate(), sysdate());
+
 --insert into course_detail (id, name) values (10001, 'JPA in 50 steps');
 --insert into course_detail (id, name) values (10002, 'JPA in 500 steps');
 --insert into course_detail (id, name) values (10003, 'JPA in 5000 steps');

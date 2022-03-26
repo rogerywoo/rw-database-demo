@@ -1,9 +1,10 @@
 package com.rwoo.rwdatabasedemo.entity;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@RepositoryRestResource(path="courses")
 @Entity
 @NamedQuery(name="query_get_all_courses", query="Select c From Course c")
 @NamedQuery(name="query_get_100", query="Select c From Course c where name like 'G%'")
@@ -27,6 +29,7 @@ public class Course {
     private List<Review> reviews = new ArrayList<Review>();
 
     @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
     private List<Student> students = new ArrayList<Student>();
 
     @UpdateTimestamp    // Hibernate only

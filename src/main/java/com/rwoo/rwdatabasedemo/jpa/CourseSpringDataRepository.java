@@ -5,6 +5,8 @@ import com.rwoo.rwdatabasedemo.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,63 +15,17 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class CourseSpringDataRepository {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+public interface CourseSpringDataRepository extends JpaRepository<Course, Long> {
 
-    @Autowired
-    EntityManager entityManager;
+    List<Course> findByName(String name);
+    List<Course> findByNameAndId(String name, Long id);
+    List<Course> countByName(String name);
+    List<Course> findByNameOrderByIdDesc(String name);
+    List<Course> deleteByName(String name);
+
+//    @Query("Select c From Course c where name like '%50%'")
+//    List<Course> courseWith50();
 
 
 
-    public Course findById(Long id){
-        return entityManager.find(Course.class, id);
-    }
-
-    public void delete(Course course){
-        entityManager.remove(course);
-    }
-
-    public void deleteById(Long id){
-        Course course = findById(id);
-        delete(course);
-    }
-
-    public Course save(Course course){
-        if (course.getId() == null){
-            entityManager.persist(course);
-        } else {
-            entityManager.merge(course);
-        }
-        return  course;
-    }
-
-    public void addReviewsForCourse(Long courseId, List<Review> reviews) {
-        Course course = findById(courseId);
-        logger.info("course.getReviews() -> {}", course.getReviews());
-        for (Review review : reviews) {
-            course.addReview(review);
-            review.setCourse(course);
-            entityManager.persist(review);
-        }
-    }
-
-    public void playWithEM(){
-        logger.info("Play with EM");
-        Course course = new Course("History");
-        entityManager.persist(course);
-
-        Course course2 = new Course("Geometry");
-        entityManager.persist(course2);
-
-//        entityManager.detach(course2);
-//
-//        entityManager.flush();
-//
-//        course.setName("History 2");
-//        entityManager.flush();
-
-//        course2.setName("Geometry 2");
-//        entityManager.flush();
-
-    }
 }

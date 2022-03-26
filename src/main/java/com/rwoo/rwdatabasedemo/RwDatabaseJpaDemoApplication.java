@@ -1,5 +1,7 @@
 package com.rwoo.rwdatabasedemo;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.rwoo.rwdatabasedemo.entity.*;
 import com.rwoo.rwdatabasedemo.jpa.CourseRepository;
 import com.rwoo.rwdatabasedemo.jpa.EmployeeRepository;
@@ -12,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,6 +64,21 @@ public class RwDatabaseJpaDemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+//		String userJson = "[{'name': 'Alex','id': 1}, "
+//				+ "{'name': 'Brian','id':2}, "
+//				+ "{'name': 'Charles','id': 3}]";
+//
+//		Gson gson = new Gson();
+//
+//		Type userListType = new TypeToken<ArrayList<TestUser>>(){}.getType();
+//
+//		ArrayList<User> userArray = gson.fromJson(userJson, userListType);
+//
+//		for(User user : userArray) {
+//			System.out.println(user);
+//		}
+
+
 		Employee fullTimeEmployee = new FullTimeEmployee("Roger", new BigDecimal(10000));
 		Employee partTimeEmployee = new PartTimeEmployee("Bill ", new BigDecimal(10));
 
@@ -71,7 +89,7 @@ public class RwDatabaseJpaDemoApplication implements CommandLineRunner {
 		logger.info("employee -> {}", employees);
 
 
-		//		List<Review> reviews = new ArrayList<Review>();
+//		List<Review> reviews = new ArrayList<Review>();
 //		reviews.add(new Review(3, "Average"));
 //		reviews.add(new Review(5, "Awesome"));
 //		courseRepository.addReviewsForCourse(10001L, reviews);
